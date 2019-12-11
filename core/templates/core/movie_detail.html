@@ -1,0 +1,30 @@
+   {% extends 'base.html' %}
+
+   {% block title %}
+      {{ movie.title }} - {{ block.super }}
+   {% endblock %}
+
+   {% block main %}
+   <h1> {{ movie }} </h1>
+      <p class="lead">
+          {{ movie.plot }}
+      </p>
+
+       <p> <a href=" {% url 'core:movie_edit' pk=movie.id %}"> + Edit movie</a></p>
+       <p> <a href=" {% url 'core:movie_delete' pk=movie.id %}"> - Delete movie</a></p>
+   {% endblock %}
+
+   {% block sidebar %}
+    <div>
+        this movie is rated
+        <span class="badge badge-primary">
+              <!– use get_field_display, each time we use a list called "field" –>
+              {{ movie.get_rating_display }}
+        </span>
+
+    </div>
+   {% endblock %}
+
+
+
+
